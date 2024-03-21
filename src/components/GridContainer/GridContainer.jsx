@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
 import CardGrid from "../CardGrid/CardGrid";
 
 import "./GridContainer.css";
+
+import PropTypes from "prop-types";
 
 const GridContainer = ({ rarity, cards }) => {
   return (
@@ -12,6 +13,11 @@ const GridContainer = ({ rarity, cards }) => {
       </div>
     </>
   );
+};
+
+GridContainer.propTypes = {
+  rarity: PropTypes.string.isRequired,
+  cards: PropTypes.array.isRequired,
 };
 
 export default GridContainer;

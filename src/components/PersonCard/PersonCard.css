@@ -1,0 +1,12 @@
+.card-image {
+  width: 20vh;
+  height: 20vh;
+}
+
+.name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.card-person {
+}

@@ -1,10 +1,23 @@
 import "./App.css";
-import { people } from "./assets/data";
+import {
+  commonCards,
+  uncommonCards,
+  rareCards,
+  legendaryCards,
+} from "./assets/data";
 
-import CardGrid from "./components/CardGrid/CardGrid";
+import GridContainer from "./components/GridContainer/GridContainer";
 
 function App() {
-  return <CardGrid people={people} />;
+  return (
+    <div>
+      <h1>ISPH STEM Cards Checklist</h1>
+      <GridContainer rarity="Common" cards={commonCards} />
+      <GridContainer rarity="Uncommon" cards={uncommonCards} />
+      <GridContainer rarity="Rare" cards={rareCards} />
+      <GridContainer rarity="Legendary" cards={legendaryCards} />
+    </div>
+  );
 }
 
 export default App;

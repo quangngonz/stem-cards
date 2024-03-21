@@ -217,3 +217,15 @@ export const people = [
     img: flossie,
   },
 ];
+
+// Export 4 list of people based on their rarity
+export const commonCards = people.filter(
+  (person) => person.rarity === "common"
+);
+export const uncommonCards = people.filter(
+  (person) => person.rarity === "uncommon"
+);
+export const rareCards = people.filter((person) => person.rarity === "Rare");
+export const legendaryCards = people.filter(
+  (person) => person.rarity === "Legendary"
+);

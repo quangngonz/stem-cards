@@ -8,13 +8,13 @@ const PersonCard = ({ name, rarity, img, occupation }) => {
   return (
     <Card key={name + "_" + rarity} className="card-person">
       <CardContent>
-        <h1 className="name">{name}</h1>
-        <p>{occupation + " | " + rarity}</p>
         <img
           className="card-image"
           src={img_src}
           alt={"image of " + name + "_" + rarity}
         />
+        <h1 className="name">{name}</h1>
+        <p className="occupation">{occupation}</p>
       </CardContent>
     </Card>
   );

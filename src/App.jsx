@@ -16,6 +16,7 @@ function App() {
       <GridContainer rarity="Uncommon" cards={uncommonCards} />
       <GridContainer rarity="Rare" cards={rareCards} />
       <GridContainer rarity="Legendary" cards={legendaryCards} />
+      <p>By: Quang Ngo | Y12</p>
     </div>
   );
 }

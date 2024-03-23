@@ -2,7 +2,7 @@
 import "./CardGrid.css";
 import PersonCard from "../PersonCard/PersonCard";
 
-const CardGrid = ({ people }) => {
+const CardGrid = ({ people, collectedCount, setCollectedCount }) => {
   return (
     <div className="grid">
       {people.map((person) => {
@@ -10,10 +10,10 @@ const CardGrid = ({ people }) => {
           <PersonCard
             className="card"
             key={person.name + "_" + person.rarity}
-            name={person.name}
-            rarity={person.rarity}
-            img={person.img}
-            occupation={person.occupation}
+            person={person}
+            collectionState={person.collected}
+            collectedCount={collectedCount}
+            setCollectedCount={setCollectedCount}
           />
         );
       })}

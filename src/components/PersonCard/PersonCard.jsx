@@ -1,42 +1,21 @@
 /* eslint-disable react/prop-types */
 import "./PersonCard.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@mui/material";
 
 import tick from "../../assets/tick.png";
 
-function checkCollectionData(name, rarity, img, occupation) {
-  return (
-    name === name &&
-    rarity === rarity &&
-    img === img &&
-    occupation === occupation
-  );
-}
+const PersonCard = ({
+  person,
+  collectionState,
+  collectedCount,
+  setCollectedCount,
+}) => {
+  const [collected, setCollected] = useState(collectionState);
 
-const PersonCard = ({ name, rarity, img, occupation }) => {
-  const [collected, setCollected] = useState(false);
-  const img_src = `${img}`;
-
-  //TODO: Change the whole local storage to a single object
+  const { name, rarity, img, occupation } = person;
   const person_local_storage = `${name}_${rarity}_${img}_${occupation}`;
-
-  useEffect(() => {
-    const storedData = localStorage.getItem(person_local_storage);
-
-    if (storedData) {
-      const { name, rarity, img, occupation, collected } =
-        JSON.parse(storedData);
-
-      if (checkCollectionData(name, rarity, img, occupation)) {
-        setCollected(collected);
-      } else {
-        setCollected(false);
-      }
-    } else {
-      setCollected(false);
-    }
-  }, [person_local_storage]);
+  const img_src = `${img}`;
 
   const handleCollected = () => {
     setCollected(!collected);
@@ -50,6 +29,8 @@ const PersonCard = ({ name, rarity, img, occupation }) => {
         collected: false,
       };
       localStorage.setItem(person_local_storage, JSON.stringify(data));
+      setCollectedCount((collectedCount) => collectedCount - 1);
+      console.log("Collected Count: ", collectedCount);
     } else {
       // console.log("Collected: ", name);
       const data = {
@@ -60,6 +41,8 @@ const PersonCard = ({ name, rarity, img, occupation }) => {
         collected: true,
       };
       localStorage.setItem(person_local_storage, JSON.stringify(data));
+      setCollectedCount((collectedCount) => collectedCount + 1);
+      console.log("Collected Count: ", collectedCount);
     }
   };
 

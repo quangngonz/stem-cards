@@ -5,8 +5,10 @@ import {
   rareCards,
   legendaryCards,
 } from "./assets/data";
+
 import { useEffect, useState } from "react";
 import loadData from "./scripts/loadData";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import GridContainer from "./components/GridContainer/GridContainer";
 
@@ -53,6 +55,7 @@ function App() {
           GitHub
         </a>
       </p>
+      <SpeedInsights />
     </div>
   );
 }

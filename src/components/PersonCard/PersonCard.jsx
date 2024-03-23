@@ -5,6 +5,15 @@ import { Card, CardContent } from "@mui/material";
 
 import tick from "../../assets/tick.png";
 
+function checkCollectionData(name, rarity, img, occupation) {
+  return (
+    name === name &&
+    rarity === rarity &&
+    img === img &&
+    occupation === occupation
+  );
+}
+
 const PersonCard = ({ name, rarity, img, occupation }) => {
   const [collected, setCollected] = useState(false);
   const img_src = `${img}`;
@@ -14,15 +23,12 @@ const PersonCard = ({ name, rarity, img, occupation }) => {
 
   useEffect(() => {
     const storedData = localStorage.getItem(person_local_storage);
+
     if (storedData) {
       const { name, rarity, img, occupation, collected } =
         JSON.parse(storedData);
-      if (
-        name === name &&
-        rarity === rarity &&
-        img === img &&
-        occupation === occupation
-      ) {
+
+      if (checkCollectionData(name, rarity, img, occupation)) {
         setCollected(collected);
       } else {
         setCollected(false);
